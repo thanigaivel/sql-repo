@@ -1,0 +1,15 @@
+1)Retrieve a list of students along with the names of courses they are enrolled in.
+ 
+Use INNER JOIN between Students and Enrollments, then between Enrollments and Courses to get course names.
+2)List all students and the courses they are enrolled in, including students who are not enrolled in any course.
+ 
+Use LEFT JOIN between Students and Enrollments, then Courses.
+3)st all courses and the students enrolled in each course, including courses with no students.
+ 
+Use RIGHT JOIN between Courses and Enrollments, then Students.
+4)Full Outer Join: Retrieve a list of all students and courses, including students without any courses and courses without any students.
+5)Retrieve each student's name along with their course name and instructor’s name.
+6)Use LEFT JOIN to find students who are not enrolled in any course.
+7)Retrieve the title of each assignment along with the student’s name and their score.
+8)List each course name, the total number of enrolled students, and the instructor's name.
+9)Calculate the average attendance rate for each course (percentage of "Present" status).
