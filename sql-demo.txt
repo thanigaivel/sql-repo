@@ -1,0 +1,33 @@
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    age INT,
+    country VARCHAR(50)
+);
+
+INSERT INTO Customers (customer_id, first_name, last_name, age, country) VALUES
+(1, 'John', 'Doe', 31, 'USA'),
+(2, 'Robert', 'Luna', 22, 'USA'),
+(3, 'David', 'Robinson', 22, 'UK'),
+(4, 'John', 'Reinhardt', 25, 'UK'),
+(5, 'Betty', 'Doe', 28, 'UAE');
+
+customer_id	first_name	last_name	age	country
+1			John	Doe		31	USA
+2			Robert	Luna		22	USA
+3			David	Robinson	22	UK
+4			John	Reinhardt	25	UK
+5			Betty	Doe		28	UAE
+
+
+SELECT Orders.order_id, Customers.first_name, Orders.item
+FROM Orders
+INNER JOIN Customers ON Orders.customer_id=Customers.customer_id;
+
+order_id	first_name	item
+1		John		Keyboard
+2		John		Mouse
+3		David		Monitor
+4		John		Keyboard
+5		Robert		Mousepad
