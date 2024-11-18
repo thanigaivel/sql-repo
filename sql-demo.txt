@@ -20,7 +20,7 @@ customer_id	first_name	last_name	age	country
 4			John	Reinhardt	25	UK
 5			Betty	Doe		28	UAE
 
-
+-----------------------------------------------------------
 SELECT Orders.order_id, Customers.first_name, Orders.item
 FROM Orders
 INNER JOIN Customers ON Orders.customer_id=Customers.customer_id;
@@ -31,3 +31,85 @@ order_id	first_name	item
 3		David		Monitor
 4		John		Keyboard
 5		Robert		Mousepad
+
+-----------------------------------------------------------
+
+UPDATE Customers
+SET last_name = 'Benny'
+WHERE first_name = 'John' AND last_name = 'Reinhardt';
+
+customer_id	first_name	last_name	age	country
+1		John			Doe	31	USA
+2		Robert			Luna	22	USA
+3		David			Robinson22	UK
+4		John			Benny	25	UK
+5		Betty			Doe	28	UAE
+
+-------------------------------------------------------------
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    item VARCHAR(50),
+    amount DECIMAL(10, 2),
+    customer_id INT
+);
+
+INSERT INTO Orders (order_id, item, amount, customer_id) VALUES
+(1, 'Keyboard', 400, 4),
+(2, 'Mouse', 300, 4),
+(3, 'Monitor', 12000, 3),
+(4, 'Keyboard', 400, 1),
+(5, 'Mousepad', 250, 2);
+
+SELECT * FROM Orders;
+
+order_id	item		amount	customer_id
+1		Keyboard	400	4
+2		Mouse		300	4
+3		Monitor		12000	3
+4		Keyboard	400	1
+5		Mousepad	250	2
+
+-------------------------------------------------------
+SELECT 
+    Customers.customer_id,
+    Customers.first_name,
+    Customers.last_name,
+    Customers.age,
+    Customers.country,
+    Orders.order_id,
+    Orders.item,
+    Orders.amount
+FROM 
+    Customers
+INNER JOIN 
+    Orders ON Customers.customer_id = Orders.customer_id;
+
+customer_id	first_name	last_name	age	country	order_id	item		amount
+4		John		Benny		25	UK	1		Keyboard	400
+4		John		Benny		25	UK	2		Mouse		300
+3		David		Robinson	22	UK	3		Monitor		12000
+1		John		Doe		31	USA	4		Keyboard	400
+2		Robert		Luna		22	USA	5		Mousepad	250
+
+--------------------------------------------------------------
+
+SELECT 
+    Customers.customer_id,
+    Customers.first_name,
+    Customers.last_name,
+    Orders.order_id,
+    Orders.item,
+    Orders.amount
+FROM 
+    Customers
+LEFT JOIN 
+    Orders ON Customers.customer_id = Orders.customer_id;
+
+customer_id	first_name	last_name	order_id	item		amount
+1		John		Doe		4		Keyboard	400
+2		Robert		Luna		5		Mousepad	250
+3		David		Robinson	3		Monitor		12000
+4		John		Benny		1		Keyboard	400
+4		John		Benny		2		Mouse		300
+5		Betty		Doe			
