@@ -113,3 +113,17 @@ customer_id	first_name	last_name	order_id	item		amount
 4		John		Benny		1		Keyboard	400
 4		John		Benny		2		Mouse		300
 5		Betty		Doe			
+
+------------------------------------------------------------------------
+
+
+SELECT AVG(Orders.amount) AS average_amount
+FROM Customers
+INNER JOIN Orders ON Customers.customer_id = Orders.customer_id
+WHERE Customers.first_name = 'John';
+
+average_amount
+366.6666666666667
+
+--------------------------------------------------------
+
